@@ -43,7 +43,7 @@ theme_Publication <- function(base_size=13) {
 }
 
 # load data formatted for panel analysis
-panel_data <- read_csv("panel_amazon_lag.csv")
+panel_data <- read_csv("data/panel_amazon_lag.csv")
 
 # drop municiaplities with no deforestation in every time period
 nodeforest <- 
