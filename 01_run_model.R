@@ -40,6 +40,7 @@ panel_data  <- panel_data %>%
                 "state", "GE_masterplan","ROL_U_improvement",
                 "ROL_U_neighborhood", "ROL_zoning", "GE_masterplan"), as_factor) 
 
+# Drop one municipality that doesn't have complete records on RQ enterprice restrictions
 panel_data <- panel_data[panel_data$ibge7_code != "1400050", ]
 panel_data <- arrange(panel_data, ibge7_code)
 
@@ -82,8 +83,7 @@ avg_fixed_fm <- log(avg_yearly_deforestation) ~
 
 # Alternate formula 1 - controls only
 fm_nogov <- log(avg_yearly_deforestation) ~ 
-    log(lagged_deforestation) + crop_dens + cattle_dens + popden 
-    + GDP_reais + factor(snapshot)
+    log(lagged_deforestation) + crop_dens + cattle_dens + popden + GDP_reais + factor(snapshot)
 
 # Alternate formula 2 - Sig. only
 fm_sig <- log(avg_yearly_deforestation) ~ 
